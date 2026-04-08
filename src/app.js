@@ -33,12 +33,15 @@ app.use(express.json());
 // Se parsean datos URL-encoded en el cuerpo de las solicitudes
 app.use(express.urlencoded({ extended: true }));
 
-// Se registran rutas de autenticación (login, registro)
-app.use("/", authRoutes);
-// Se registran rutas de API (crear, obtener, actualizar, eliminar)
-app.use("/", apiRoutes);
-// Se registran rutas de manejo de errores
-app.use("/", errorRoutes);
+// Ruta base para comprobar que el backend está activo
+app.get("/", (req, res) => {
+  res.json({ message: "Backend activo" });
+});
+
+// Se registran rutas de autenticación y APIs bajo el prefijo /api
+app.use("/api", authRoutes);
+app.use("/api", apiRoutes);
+app.use("/api", errorRoutes);
 
 // Middleware que maneja todas las rutas no encontradas
 app.use((req, res) => {
