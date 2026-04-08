@@ -1,6 +1,7 @@
 // Se importan módulos necesarios para la aplicación
 import cors from "cors";
 import express from "express";
+import { loginUser } from "./controllers/authc.js";
 import apiRoutes from "./routes/apir.js";
 import authRoutes from "./routes/authr.js";
 import errorRoutes from "./routes/errorr.js";
@@ -16,7 +17,7 @@ const allowedOrigins = rawCorsOrigin
     ? JSON.parse(rawCorsOrigin)
     : rawCorsOrigin.split(",").map((origin) => origin.trim())
   : [
-      "http://localhost:5173", "https://t4-react.vercel.app/"
+      "http://localhost:5173", "https://t4-react.vercel.app"
     ];
 
 const corsOptions = {
@@ -35,6 +36,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json({ message: "Backend activo" });
 });
+
+// Alias para compatibilidad con frontend que use /login directamente
+app.post("/login", loginUser);
 
 // Se registran rutas de autenticación y APIs bajo el prefijo /api
 app.use("/api", authRoutes);
