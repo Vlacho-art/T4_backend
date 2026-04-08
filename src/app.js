@@ -15,7 +15,11 @@ const allowedOrigins = rawCorsOrigin
   ? rawCorsOrigin.trim().startsWith("[")
     ? JSON.parse(rawCorsOrigin)
     : rawCorsOrigin.split(",").map((origin) => origin.trim())
-  : ["http://localhost:5173", "https://t4-react-ue8d-c7t7o11y2-durangovladimir-5979s-projects.vercel.app/"];
+  : [
+      "http://localhost:5173",
+      "https://t4-react-ue8d-c7t7o11y2-durangovladimir-5979s-projects.vercel.app/",
+      "https://t4-backend-arit.onrender.com"
+    ];
 
 const corsOptions = {
   origin: allowedOrigins,

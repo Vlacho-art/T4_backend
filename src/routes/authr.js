@@ -14,7 +14,7 @@ const router = Router();
 // Se registra un nuevo usuario
 router.post("/api/users", createUser);
 // Se autentica un usuario y se devuelve un token JWT
-router.post("/api/users", loginUser);
+router.post("/api/login", loginUser);
 
 // Se obtiene el perfil del usuario autenticado
 router.get("/api/users", authenticateToken, getUsers);
