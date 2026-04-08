@@ -12,17 +12,17 @@ import { authenticateToken } from "../middleware/auth.middleware.js";
 const router = Router();
 
 // Se registra un nuevo usuario
-router.post("/users", createUser);
+router.post("/api/users", createUser);
 // Se autentica un usuario y se devuelve un token JWT
-router.post("/login", loginUser);
+router.post("/api/login", loginUser);
 
 // Se obtiene el perfil del usuario autenticado
-router.get("/users", authenticateToken, getUsers);
+router.get("/api/users", authenticateToken, getUsers);
 // Se obtienen los datos de un usuario específico (solo el usuario mismo)
-router.get("/users/:id", authenticateToken, getUser);
+router.get("/api/users/:id", authenticateToken, getUser);
 // Se actualizan los datos de un usuario (solo el usuario mismo)
-router.put("/users/:id", authenticateToken, updateUser);
+router.put("/api/users/:id", authenticateToken, updateUser);
 // Se elimina la cuenta de un usuario (solo el usuario mismo)
-router.delete("/users/:id", authenticateToken, deleteUser);
+router.delete("/api/users/:id", authenticateToken, deleteUser);
 
 export default router;

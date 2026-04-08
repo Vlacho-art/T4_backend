@@ -179,7 +179,6 @@ export const updateUser = async (req, res) => {
   }
 };
 
-// ===== ELIMINAR USUARIO =====
 // Se elimina la cuenta de un usuario (solo el usuario mismo puede eliminar su propia cuenta)
 //  Eliminar usuario
 export const deleteUser = async (req, res) => {
