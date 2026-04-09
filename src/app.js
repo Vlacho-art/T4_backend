@@ -1,7 +1,7 @@
 // Se importan módulos necesarios para la aplicación
 import cors from "cors";
 import express from "express";
-import { loginUser } from "./controllers/authc.js";
+import { createUser, loginUser } from "./controllers/authc.js";
 import apiRoutes from "./routes/apir.js";
 import authRoutes from "./routes/authr.js";
 import errorRoutes from "./routes/errorr.js";
@@ -37,8 +37,9 @@ app.get("/", (req, res) => {
   res.json({ message: "Backend activo" });
 });
 
-// Alias para compatibilidad con frontend que use /login directamente
+// Alias para compatibilidad con frontend que use /login o /users directamente
 app.post("/login", loginUser);
+app.post("/users", createUser);
 
 // Se registran rutas de autenticación y APIs bajo el prefijo /api
 app.use("/api", authRoutes);
