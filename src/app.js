@@ -36,7 +36,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Ruta base para comprobar que el backend está activo
-app.get("/", )
+app.get("/", (req, res) => {
+  res.send("Welcome to my API")
+});
 // Se registran rutas de autenticación y APIs bajo el prefijo /api
 app.use("/api", authRoutes);
 app.use("/api", apiRoutes);
