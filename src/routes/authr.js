@@ -8,7 +8,7 @@ import {
     updateUser
 } from "../controllers/authc.js";
 import { authenticateToken } from "../middleware/auth.middleware.js";
-
+// Se crea un router para manejar las rutas de autenticación
 const router = Router();
 
 // Se registra un nuevo usuario
