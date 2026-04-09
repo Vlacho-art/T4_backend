@@ -1,4 +1,3 @@
-// Se importan módulos necesarios para la aplicación
 import cors from "cors";
 import express from "express";
 import apiRoutes from "./routes/apir.js";
@@ -18,17 +17,15 @@ const allowedOrigins = rawCorsOrigin
 const corsOptions = {
   origin: allowedOrigins,
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],   // ← Agrega esto
-  allowedHeaders: ["Content-Type", "Authorization"],       // ← Agrega esto
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
-// ✅ CORS debe ir PRIMERO, antes de todo
 app.use(cors(corsOptions));
 
-// ✅ Responde explícitamente a todas las peticiones preflight
-app.options("*", cors(corsOptions));
+// ✅ Sintaxis correcta para Express 5
+app.options("/{*path}", cors(corsOptions));
 
-// Log para verificar en Render qué origins está cargando
 console.log("✅ Allowed origins:", allowedOrigins);
 
 app.use(express.json());
