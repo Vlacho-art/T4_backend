@@ -1,5 +1,6 @@
 // Se importan módulos necesarios para la aplicación
 import cors from "cors";
+import morgan from "morgan";
 import express from "express";
 import apiRoutes from "./routes/apir.js";
 import authRoutes from "./routes/authr.js";
@@ -24,18 +25,18 @@ const corsOptions = {
   credentials: true,
 };
 
+
 // Se aplica CORS para permitir solicitudes desde otros orígenes
 app.use(cors(corsOptions));
+// Se importa morgan para registrar solicitudes HTTP en la consola
+app.use(morgan('dev'));
 // Se parsean datos JSON en el cuerpo de las solicitudes
 app.use(express.json());
 // Se parsean datos URL-encoded en el cuerpo de las solicitudes
 app.use(express.urlencoded({ extended: true }));
 
 // Ruta base para comprobar que el backend está activo
-app.get("/", (req, res) => {
-  res.json({ message: "Backend activo" });
-});
-
+app.get("/", )
 // Se registran rutas de autenticación y APIs bajo el prefijo /api
 app.use("/api", authRoutes);
 app.use("/api", apiRoutes);
